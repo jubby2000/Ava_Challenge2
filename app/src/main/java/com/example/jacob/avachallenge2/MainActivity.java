@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private RecordButton mRecordButton = null;
     private MediaRecorder mRecorder = null;
 
-    private PermissionsButton mPermissionsButton = null;
+//    private PermissionsButton mPermissionsButton = null;
 
     private PlayButton mPlayButton = null;
     private MediaPlayer mPlayer = null;
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout ll = new LinearLayout(this);
 
-        mPermissionsButton = new PermissionsButton(this);
-        mPermissionsButton.setVisibility(View.GONE);
-        ll.addView(mPermissionsButton,
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        0));
+//        mPermissionsButton = new PermissionsButton(this);
+//        mPermissionsButton.setVisibility(View.GONE);
+//        ll.addView(mPermissionsButton,
+//                new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        0));
         mRecordButton = new RecordButton(this);
         ll.addView(mRecordButton,
                 new LinearLayout.LayoutParams(
@@ -120,16 +120,17 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    mRecordButton.setVisibility(View.VISIBLE);
-                    mPermissionsButton.setVisibility(View.GONE);
+//                    mRecordButton.setVisibility(View.VISIBLE);
+//                    mPermissionsButton.setVisibility(View.GONE);
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
 //                    mRecordButton.setEnabled(true);
 
                 } else {
-//                    mRecordButton.setEnabled(false);
-                    mRecordButton.setVisibility(View.GONE);
-                    mPermissionsButton.setVisibility(View.VISIBLE);
+
+                    finish();
+//                    mRecordButton.setVisibility(View.GONE);
+//                    mPermissionsButton.setVisibility(View.VISIBLE);
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                 }
@@ -239,20 +240,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class PermissionsButton extends Button {
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                requestPermissions();
-            }
-        };
-
-        public PermissionsButton(Context ctx) {
-            super(ctx);
-            setText("Request permissions");
-            setOnClickListener(clicker);
-        }
-    }
+//    class PermissionsButton extends Button {
+//
+//        OnClickListener clicker = new OnClickListener() {
+//            public void onClick(View v) {
+//                requestPermissions();
+//            }
+//        };
+//
+//        public PermissionsButton(Context ctx) {
+//            super(ctx);
+//            setText("Request permissions");
+//            setOnClickListener(clicker);
+//        }
+//    }
 
     class PlayButton extends Button {
         boolean mStartPlaying = true;
